@@ -1,0 +1,16 @@
+<!-- resources/views/invoices/index.edge -->
+
+@extends('layouts.master')
+
+@section('content')
+  <h1>Invoices</h1>
+  <ul>
+    @foreach (invoices as invoice)
+      <li>
+        <a href="{{ route('invoices.show', { id: invoice.id }) }}">
+          {{ invoice.description }} - ${{ invoice.amount }}
+        </a>
+      </li>
+    @endforeach
+  </ul>
+@endsection

@@ -1,0 +1,17 @@
+<!-- resources/views/clients/index.edge -->
+
+@extends('layouts.master')
+
+@section('content')
+  <h1>Clients</h1>
+  <a href="{{ route('clients.create') }}">Create New Client</a>
+  <ul>
+    @foreach (clients as client)
+      <li>
+        <a href="{{ route('clients.show', { id: client.id }) }}">
+          {{ client.name }} - {{ client.email }}
+        </a>
+      </li>
+    @endforeach
+  </ul>
+@endsection

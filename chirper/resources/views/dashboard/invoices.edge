@@ -1,0 +1,44 @@
+<!-- resources/views/dashboard/invoices/index.edge -->
+
+@extends('layouts.dashboard')
+
+@section('content')
+  <div class="card">
+    <h2>Your Invoices</h2>
+
+    <!-- Example: Display a list of invoices -->
+    <table>
+      <thead>
+        <tr>
+          <th>Invoice Number</th>
+          <th>Client</th>
+          <th>Amount</th>
+          <th>Status</th>
+          <!-- Add more header columns as needed -->
+        </tr>
+      </thead>
+      <tbody>
+        @foreach (invoicesData as invoice)
+          <tr>
+            <td>{{ invoice.invoiceNumber }}</td>
+            <td>{{ invoice.clientName }}</td>
+            <td>{{ invoice.amount }}</td>
+            <td>{{ invoice.status }}</td>
+            <!-- Add more columns as needed -->
+          </tr>
+        @endforeach
+      </tbody>
+    </table>
+
+    <!-- Add pagination links if needed -->
+    <div class="pagination">
+      <!-- Example: Display pagination links -->
+      <span>Page 1 of 5</span>
+      <a href="#">1</a>
+      <a href="#">2</a>
+      <!-- Add more pagination links as needed -->
+    </div>
+
+    <!-- Add more content as needed -->
+  </div>
+@endsection

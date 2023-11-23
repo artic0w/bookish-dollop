@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>End to End Authentication</title>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 font-sans">
+  @if(auth.isLoggedIn && !auth.user.emailVerifiedAt)
+    <div class="bg-indigo-600">
+      <div class="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
+        <div class="text-center text-sm">
+          <p class="text-white">
+            You have not verified your email address.
+
+            <a href="/verification/new" class="text-white underline">Didn't receive the verification link?</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  @endif
+
+  <nav class="bg-white py-6">
+    <div class="container mx-auto flex justify-between items-center px-6">
+      <div class="space-x-6">
+        <a href="/">Home</a>
+        <a href="/dashboard">Dashboard</a>
+      </div>
+
+      <div class="flex space-x-6">
+        @if(auth.isLoggedIn)
+          <div>{{ auth.user.name }}</div>
+
+          <form action="/logout" method="post">
+            {{ csrfField() }}
+
+            <button>Logout</button>
+          </form>
+        @else
+          <a href="/register">Register</a>
+          <a href="/login">Login</a>
+        @endif
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mx-auto px-6 my-6">
+    @!section('content')
+  </div>
+</body>
+</html>

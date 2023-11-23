@@ -1,0 +1,30 @@
+<!-- resources/views/dashboard/settings.edge -->
+
+@extends('layouts.dashboard')
+
+@section('content')
+  <div class="card">
+    <h2>Your Settings</h2>
+    
+    <!-- Example: Display user information -->
+    <p>Welcome, {{ auth.user.username }}!</p>
+    <p>Email: {{ auth.user.email }}</p>
+
+    <!-- Example: Form for updating user settings -->
+    <form action="{{ route('dashboard.settings.update') }}" method="post">
+      @csrf
+      <!-- Add input fields for updating settings -->
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" value="{{ auth.user.username }}" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" value="{{ auth.user.email }}" required>
+
+      <!-- Add more input fields as needed -->
+
+      <button type="submit">Update Settings</button>
+    </form>
+
+    <!-- Add more content as needed -->
+  </div>
+@endsection

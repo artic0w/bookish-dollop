@@ -1,0 +1,23 @@
+<!-- resources/views/clients/create.edge -->
+
+@extends('layouts.master')
+
+@section('content')
+  <h1>Create Client</h1>
+  <form method="POST" action="{{ route('clients.store') }}">
+    @csrf
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" required>
+    <br>
+
+    <label for="email">Email:</label>
+    <input type="email" name="email" id="email" required>
+    <br>
+
+    <label for="phone">Phone:</label>
+    <input type="text" name="phone" id="phone">
+    <br>
+
+    <button type="submit">Create Client</button>
+  </form>
+@endsection
